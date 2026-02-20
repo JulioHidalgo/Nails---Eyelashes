@@ -1,60 +1,33 @@
 import api from "./api";
 
 /**
- * Servicios API - Funciones para interactuar con endpoints de servicios
- */
-
-/**
-
- * @returns {Promise} 
+ * Obtener todos los servicios desde Json Server
  */
 export const getServices = async () => {
-  try {
-    const response = await api.get("/assets/data/data_nails.json");
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
+  const response = await api.get("/services");
+  return response.data;
 };
 
 /**
- * Obtiene un servicio por ID
- * @param {string} serviceId
- * @returns {Promise}
+ * Obtener servicio por ID
  */
 export const getServiceById = async (serviceId) => {
-  try {
-    const response = await api.get(`/api/services/${serviceId}`);
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
+  const response = await api.get(`/services/${serviceId}`);
+  return response.data;
 };
 
 /**
- * Simula el envío de una reserva a un servidor
- * @param {Object} reservationData
- * @returns {Promise}
+ * Crear reserva
  */
 export const createReservation = async (reservationData) => {
-  try {
-    const response = await api.post("/api/reservations", reservationData);
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
+  const response = await api.post("/reservations", reservationData);
+  return response.data;
 };
 
 /**
- * Simula el envío de un pedido a un servidor
- * @param {Object} orderData
- * @returns {Promise}
+ * Crear orden
  */
 export const createOrder = async (orderData) => {
-  try {
-    const response = await api.post("/api/orders", orderData);
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
+  const response = await api.post("/orders", orderData);
+  return response.data;
 };
