@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Manicure",
+    "items": [
+      {
+        "name": "Manicure Permanente",
+        "price": 15000,
+        "image": "manicure",
+        "category": "Uñas"
+      },
+      {
+        "name": "Uñas Acrílicas",
+        "price": 28000,
+        "image": "unas_acrilicas",
+        "category": "Uñas"
+      }
+    ]
+  },
+  {
+    "title": "Pestañas",
+    "items": [
+      {
+        "name": "Lifting de Pestañas",
+        "price": 22000,
+        "image": "lifting_pestanas",
+        "category": "Pestañas"
+      },
+      {
+        "name": "Volumen Ruso",
+        "price": 35000,
+        "image": "volumen",
+        "category": "Pestañas"
+      }
+    ]
+  }
+]
+

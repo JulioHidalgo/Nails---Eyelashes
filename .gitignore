@@ -1,0 +1,63 @@
+############################
+# NODE
+############################
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+
+############################
+# ENV VARIABLES (MUY IMPORTANTE)
+############################
+.env
+.env.local
+.env.development
+.env.production
+
+############################
+# FIREBASE
+############################
+.firebase/
+firebase-debug.log
+.firebaserc
+
+############################
+# BUILD / DIST
+############################
+dist/
+build/
+out/
+
+############################
+# LOGS
+############################
+logs/
+*.log
+
+############################
+# SISTEMA OPERATIVO
+############################
+.DS_Store
+Thumbs.db
+
+############################
+# EDITORES
+############################
+.vscode/
+.idea/
+*.swp
+
+############################
+# CACHE
+############################
+.cache/
+.parcel-cache/
+
+############################
+# ARCHIVOS TEMPORALES
+############################
+*.tmp
+*.temp
+*.bak
