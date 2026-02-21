@@ -1,10 +1,11 @@
 {
   "name": "abi-nails",
   "version": "1.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "json-server --watch db.json --port 3000",
-    "start": "json-server --watch db.json --host 0.0.0.0 --port ${PORT:-3000}",
+    "start": "json-server --watch db.json --host 0.0.0.0 --port $PORT",
     "build": "node node_modules/vite/bin/vite.js build",
     "preview": "node node_modules/vite/bin/vite.js preview"
   },
