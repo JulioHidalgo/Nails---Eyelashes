@@ -11,7 +11,27 @@ export function useServices() {
     error.value = null;
 
     try {
-      services.value = await getServices();
+      const data = await getServices();
+
+      // Agrupar servicios por categoría
+      const grouped = data.reduce((acc, service) => {
+        const categoryExists = acc.find(
+          (cat) => cat.title === service.category,
+        );
+
+        if (categoryExists) {
+          categoryExists.items.push(service);
+        } else {
+          acc.push({
+            title: service.category,
+            items: [service],
+          });
+        }
+
+        return acc;
+      }, []);
+
+      services.value = grouped;
     } catch (err) {
       error.value = "Error al cargar los servicios";
       console.error(err);
