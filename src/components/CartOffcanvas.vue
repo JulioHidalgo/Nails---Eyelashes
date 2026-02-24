@@ -32,7 +32,10 @@
         <h5>
           Total: <span>${{ subtotal.toLocaleString() }}</span>
         </h5>
-        <button class="btn btn-abi w-100 mt-3" @click="$emit('send-whatsapp')">
+        <button
+          class="btn btn-whatsapp w-100 mt-3"
+          @click="$emit('send-whatsapp')"
+        >
           <i class="bi bi-whatsapp"></i> Enviar por WhatsApp
         </button>
       </div>
@@ -107,6 +110,18 @@ onMounted(() => {
 .btn-pink:hover {
   background-color: #e60073;
   color: white;
+}
+
+.btn-whatsapp {
+  background-color: #25d366;
+  color: white;
+  border-color: #25d366;
+}
+
+.btn-whatsapp:hover {
+  background-color: #1fb352;
+  color: white;
+  border-color: #1fb352;
 }
 
 .offcanvas-header {

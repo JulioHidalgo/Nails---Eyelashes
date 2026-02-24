@@ -4,8 +4,8 @@ import api from "./api";
  * Obtener todos los servicios desde Json Server
  */
 export const getServices = async () => {
-  const response = await api.get("/services");
-  return response.data;
+  const response = await api.get("/db.json");
+  return response.data.services;
 };
 
 /**

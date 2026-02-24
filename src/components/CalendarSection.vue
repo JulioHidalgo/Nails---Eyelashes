@@ -146,6 +146,10 @@ onMounted(async () => {
   color: white;
 }
 
+:deep(.fc .fc-highlight) {
+  background: rgb(159 44 31 / 30%) !important;
+}
+
 :deep(.fc-toolbar-title) {
   font-size: 1.5rem !important;
   font-weight: 600;
@@ -161,11 +165,26 @@ onMounted(async () => {
 }
 
 :deep(.fc-daygrid-day.fc-day-today) {
-  background: rgba(255, 79, 163, 0.3) !important;
+  background: rgba(128, 0, 128, 0.3) !important;
+  position: relative;
+}
+
+:deep(.fc-daygrid-day.fc-day-today::after) {
+  content: "Hoy";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.75rem;
+  background: purple;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
 }
 
 :deep(.fc-daygrid-day.fc-day-selected) {
-  background: #ff4fa3 !important;
+  background: #ff874f !important;
   color: white !important;
 }
 

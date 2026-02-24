@@ -51,5 +51,6 @@ body {
 
 .text-abi {
   color: #ff4fa3;
+  text-decoration-line: underline;
 }
 </style>
