@@ -11,10 +11,18 @@ export function useServices() {
     error.value = null;
 
     try {
+      // Siempre usamos getServices, que ya se encarga de
+      // intentar Firebase primero y caer al JSON local.
       const data = await getServices();
 
+      const servicesArray = Array.isArray(data)
+        ? data
+        : Array.isArray(data?.services)
+          ? data.services
+          : [];
+
       // Agrupar servicios por categoría
-      const grouped = data.reduce((acc, service) => {
+      const grouped = servicesArray.reduce((acc, service) => {
         const categoryExists = acc.find(
           (cat) => cat.title === service.category,
         );

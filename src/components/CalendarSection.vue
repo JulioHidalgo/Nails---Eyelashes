@@ -39,6 +39,7 @@
 
 <script setup>
 import { ref, computed, onMounted, inject, nextTick } from "vue";
+import { createReservationInFirebase } from "../services/firebaseReservationsApi";
 
 const calendarEl = ref(null);
 const fechaSeleccionada = ref("");
@@ -66,7 +67,7 @@ function calcularSubtotal() {
   );
 }
 
-function confirmarReserva() {
+async function confirmarReserva() {
   if (!isFormValid.value) {
     if (!fechaSeleccionada.value) {
       alert("Selecciona una fecha");
@@ -89,6 +90,23 @@ function confirmarReserva() {
       : "No especificado";
 
   const total = calcularSubtotal();
+
+  try {
+    await createReservationInFirebase({
+      clientName: nombreCliente.value,
+      services: cartItems.value.map((p) => ({
+        id: p.id,
+        name: p.nombre,
+        price: p.precio,
+        quantity: p.cantidad,
+      })),
+      date: fechaSeleccionada.value,
+      timeSlot: horaSeleccionada.value,
+      total,
+    });
+  } catch (e) {
+    console.error("Error guardando la reserva en Firebase", e);
+  }
 
   let mensaje = `💖 NUEVA RESERVA Abi Nails 💖\n\n`;
   mensaje += `👤 Cliente: ${nombreCliente.value}\n`;

@@ -1,11 +1,11 @@
 import api from "./api";
+import { getServicesFromFirebase } from "./firebaseServicesApi";
 
 /**
- * Obtener todos los servicios desde Json Server
+ * Obtener todos los servicios directamente desde Firebase
  */
 export const getServices = async () => {
-  const response = await api.get("/db.json");
-  return response.data.services;
+  return await getServicesFromFirebase();
 };
 
 /**
@@ -28,6 +28,12 @@ export const createReservation = async (reservationData) => {
  * Crear orden
  */
 export const createOrder = async (orderData) => {
-  const response = await api.post("/orders", orderData);
-  return response.data;
+  try {
+    const { createOrderInFirebase } = await import("./firebaseOrdersApi");
+    return await createOrderInFirebase(orderData);
+  } catch (firebaseError) {
+    console.error("Error creando orden en Firebase, usando API JSON como respaldo.", firebaseError);
+    const response = await api.post("/orders", orderData);
+    return response.data;
+  }
 };
